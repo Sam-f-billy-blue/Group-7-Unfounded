@@ -18,7 +18,7 @@ public class UIManager : MonoBehaviour
     public void EndGame()
     {
         completeLevelUI.SetActive(true);
-        Time.timeScale = .5f;
+        Time.timeScale = 0.0f;
         Invoke("ReloadLevel", 2);
         
 

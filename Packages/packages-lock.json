@@ -38,9 +38,9 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.postprocessing": {
-      "version": "file:C:/Users/Sam/Downloads/PostProcessing-2",
+      "version": "file:PostProcessing-2",
       "depth": 0,
-      "source": "local",
+      "source": "embedded",
       "dependencies": {}
     },
     "com.unity.probuilder": {
