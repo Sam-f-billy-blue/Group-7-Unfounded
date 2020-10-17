@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -88,6 +89,8 @@ public class Player : MonoBehaviour
     [Header("These are set on Start()")]
     [SerializeField] GameObject bulletImpact;
 
+    public UIManager restart;
+
     void Awake()
     {
         Controller = GetComponent<CharacterController>();
@@ -103,6 +106,7 @@ public class Player : MonoBehaviour
             tPain += Time.deltaTime * lerpSpeed;
             painAlpha = Mathf.Lerp(painAlpha, 0, tPain);
         }
+
     }
 
     void LateUpdate()
@@ -180,6 +184,15 @@ public class Player : MonoBehaviour
         treasure -= amount;
         if (treasure < 0) ammo = 0;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+       if (other.gameObject.CompareTag ("Enemy"))
+        {
+            restart.ReloadLevel();
+        }
+    }
+
     /*
     public void AddKey(Key.KeyType keyType)
     {
