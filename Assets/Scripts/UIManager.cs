@@ -11,7 +11,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] Player player;
     [SerializeField] GameObject pauseMenu;
     [SerializeField] KeyCode menuToggle;
-
+    
     public GameObject completeLevelUI;
     bool pauseMenuActive = false;
 
@@ -56,6 +56,7 @@ public class UIManager : MonoBehaviour
                 Cursor.visible = false;
             }
         }
+
     }
 
     public void ReloadLevel()

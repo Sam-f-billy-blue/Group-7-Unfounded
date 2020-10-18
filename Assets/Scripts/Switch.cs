@@ -44,6 +44,8 @@ public class Switch : MonoBehaviour
 
     AudioSource audioSource;
 
+    bool doItAgain = true;
+    public GameObject whatWasThat;
     bool allowInteract = false;
     bool doOnce = false;
     
@@ -153,6 +155,11 @@ public class Switch : MonoBehaviour
                     }
 
                     PlayAudio();
+                    if (doItAgain == true) 
+                    { 
+                        whatWasThat.SetActive(true);
+                        doItAgain = false;
+                    }
                     break;
                 case SwitchMode.Disabled:
                     break;
@@ -193,4 +200,5 @@ public class Switch : MonoBehaviour
             audioSource.Play();
         }
     }
+
 }

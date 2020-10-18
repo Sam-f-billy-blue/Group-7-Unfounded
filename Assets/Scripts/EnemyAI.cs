@@ -73,7 +73,6 @@ public class EnemyAI : MonoBehaviour
     private void KillPlayer()
     {
         transform.LookAt(player);
-
         
     }
 
