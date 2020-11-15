@@ -29,6 +29,11 @@ public class UIManager : MonoBehaviour
         get { return pauseMenuActive; }
     }
 
+    public void MainMenuReturn()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
     void Start()
     {
         if (pauseMenu != null) pauseMenu.SetActive(false);
