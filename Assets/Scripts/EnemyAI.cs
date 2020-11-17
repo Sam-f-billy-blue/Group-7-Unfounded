@@ -14,6 +14,9 @@ public class EnemyAI : MonoBehaviour
     public LayerMask whatIsGround;
     public LayerMask whatIsPlayer;
 
+    AudioSource audioSource;
+    [SerializeField] AudioClip beingChased;
+
 
     public Vector3 walkPoint;
     bool walkPointSet;
@@ -68,6 +71,11 @@ public class EnemyAI : MonoBehaviour
     private void ChasePlayer()
     {
         agent.SetDestination(player.position);
+        if (audioSource != null && beingChased != null)
+        {
+            audioSource.clip = beingChased;
+            audioSource.Play();
+        }
     }
 
     private void KillPlayer()

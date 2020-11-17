@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class KeyItem : MonoBehaviour
 {
+
     public Component doorCollider;
     public GameObject bodyGone;
     public GameObject theText;
@@ -12,7 +13,7 @@ public class KeyItem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -25,7 +26,6 @@ public class KeyItem : MonoBehaviour
         }
 
         if (Input.GetKey(KeyCode.E))
-        bodyGone.SetActive(false);
+            bodyGone.SetActive(false);
     }
-
 }
