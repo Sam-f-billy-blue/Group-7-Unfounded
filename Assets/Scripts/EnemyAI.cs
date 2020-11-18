@@ -14,9 +14,8 @@ public class EnemyAI : MonoBehaviour
     public LayerMask whatIsGround;
     public LayerMask whatIsPlayer;
 
-    AudioSource audioSource;
-    [SerializeField] AudioClip beingChased;
-
+    public AudioSource beingChased;
+    public AudioSource captured;
 
     public Vector3 walkPoint;
     bool walkPointSet;
@@ -24,8 +23,10 @@ public class EnemyAI : MonoBehaviour
 
     public float sightRange;
     public float deathRange;
+    public float heartRange;
     public bool playerInSightRange;
     public bool playerInDeathRange;
+    public bool playerInHeartRange;
 
     private void Awake()
     {
@@ -35,10 +36,13 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
+        playerInHeartRange = Physics.CheckSphere(transform.position, heartRange, whatIsPlayer);
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInDeathRange = Physics.CheckSphere(transform.position, deathRange, whatIsPlayer);
 
         if (player != playerInSightRange && player != playerInDeathRange) Patrolling();
+
+        if (player == playerInHeartRange && player != playerInDeathRange) PlayHeartbeat();
 
         if (player == playerInSightRange && player != playerInDeathRange) ChasePlayer();
 
@@ -57,6 +61,11 @@ public class EnemyAI : MonoBehaviour
         if (distanceToWalkPoint.magnitude < 1f)
             walkPointSet = false;
     }
+
+    private void PlayHeartbeat()
+    {
+        beingChased.Play();
+    }
     private void SearchWalkPoint()
     {
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
@@ -71,11 +80,6 @@ public class EnemyAI : MonoBehaviour
     private void ChasePlayer()
     {
         agent.SetDestination(player.position);
-        if (audioSource != null && beingChased != null)
-        {
-            audioSource.clip = beingChased;
-            audioSource.Play();
-        }
     }
 
     private void KillPlayer()
