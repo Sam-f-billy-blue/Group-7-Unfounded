@@ -6,22 +6,40 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    
+
 
     [SerializeField] Player player;
     [SerializeField] GameObject pauseMenu;
     [SerializeField] KeyCode menuToggle;
-    
+
     public GameObject completeLevelUI;
+    public UIManager gameManager;
     bool pauseMenuActive = false;
+    bool isPaused = false;
+
+    public void pauseGame()
+    {
+        if (isPaused)
+        {
+            isPaused = true;
+            Time.timeScale = 0;
+
+        }
+        else 
+        {
+            isPaused = false;
+            Time.timeScale = 1;
+        }
+    }
+
+    public void OnTriggerEnter()
+    {
+        SceneManager.LoadScene("EndMenu");
+    }
 
     public void EndGame()
     {
         completeLevelUI.SetActive(true);
-        Time.timeScale = 0.0f;
-        Invoke("ReloadLevel", 2);
-        
-
     }
 
     public bool PauseMenuActive
@@ -41,7 +59,7 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-       
+
         if (pauseMenu != null)
         {
             if (Input.GetKeyUp(menuToggle)) pauseMenuActive = !pauseMenuActive;
@@ -61,8 +79,8 @@ public class UIManager : MonoBehaviour
                 Cursor.visible = false;
             }
         }
-
     }
+
 
     public void ReloadLevel()
     {
