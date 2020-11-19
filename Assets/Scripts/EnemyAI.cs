@@ -11,6 +11,8 @@ public class EnemyAI : MonoBehaviour
 
     public Transform player;
 
+    public WaypointController ways;
+
     public LayerMask whatIsGround;
     public LayerMask whatIsPlayer;
 
@@ -18,7 +20,7 @@ public class EnemyAI : MonoBehaviour
     public AudioSource captured;
 
     public Vector3 walkPoint;
-    bool walkPointSet;
+    public bool walkPointSet;
     public float walkPointRange;
 
     public float sightRange;
@@ -32,6 +34,7 @@ public class EnemyAI : MonoBehaviour
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
+        ways = GetComponent<WaypointController>();
     }
 
     private void Update()
@@ -51,30 +54,44 @@ public class EnemyAI : MonoBehaviour
 
     private void Patrolling()
     {
-        if (!walkPointSet) SearchWalkPoint();
+        if (!walkPointSet) SearchWalkPoint(false);
 
         if (walkPointSet)
-            agent.SetDestination(walkPoint);
+        { agent.SetDestination(walkPoint);
+            print(walkPoint);
+        }
 
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
         if (distanceToWalkPoint.magnitude < 1f)
+        {
             walkPointSet = false;
+            ways.targetWaypointIndex++;
+        }
     }
 
     private void PlayHeartbeat()
     {
         beingChased.Play();
     }
-    private void SearchWalkPoint()
+    private void SearchWalkPoint(bool randomize)
     {
-        float randomZ = Random.Range(-walkPointRange, walkPointRange);
-        float randomX = Random.Range(-walkPointRange, walkPointRange);
+        if (randomize)
+        {
+            float randomZ = Random.Range(-walkPointRange, walkPointRange);
+            float randomX = Random.Range(-walkPointRange, walkPointRange);
 
-        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+            walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
-        if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
+            if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
+                walkPointSet = true;
+        }
+        else
+        {
+
+            walkPoint = ways.waypoints[ways.targetWaypointIndex].position;
             walkPointSet = true;
+        }
     }
 
     private void ChasePlayer()

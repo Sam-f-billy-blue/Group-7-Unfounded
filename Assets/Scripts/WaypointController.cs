@@ -7,11 +7,10 @@ public class WaypointController : MonoBehaviour
 
     public List<Transform> waypoints = new List<Transform>();
     private Transform targetWaypoint;
-    private int targetWaypointIndex = 0;
+    public int targetWaypointIndex = 0;
     private float minDistance = 0.1f;
-    private int lastWaypointIndex;
+    public int lastWaypointIndex;
 
-    public float movementSpeed = 3.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -22,8 +21,7 @@ public class WaypointController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float movementStep = movementSpeed * Time.deltaTime;
 
-        transform.position = Vector3.MoveTowards(transform.position, targetWaypoint.position, movementStep);
+  
     }
 }
