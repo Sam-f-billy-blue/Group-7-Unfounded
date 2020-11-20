@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -189,7 +190,7 @@ public class Player : MonoBehaviour
     {
        if (other.gameObject.CompareTag ("Enemy"))
         {
-            restart.ReloadLevel();
+            SceneManager.LoadScene("DeathScene");
         }
     }
 
