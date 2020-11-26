@@ -5,137 +5,26 @@ using UnityEngine;
 public class KeyItemCounter : MonoBehaviour
 {
     public Component doorCollider;
-    public GameObject firstGone;
-    public GameObject secondGone;
-    public GameObject thirdGone;
     public GameObject theText;
 
-    private int howManyAreThere;
+    public bool openTheDoor = false;
+    public int itemCount;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        itemCount = 4;
     }
 
     // Update is called once per frame
     void OnTriggerStay()
     {
-
-        if (Input.GetKey(KeyCode.E) && firstGone)
+        if (itemCount >= 3 && openTheDoor == false)
         {
-            firstGone.SetActive(false);
-            howManyAreThere += 1;
-
-            if (howManyAreThere <= 1 && secondGone)
-            {
-                secondGone.SetActive(false);
-                howManyAreThere += 1;
-
-                if (howManyAreThere == 2 && thirdGone)
-                {
-                    theText.SetActive(true);
-                    thirdGone.SetActive(false);
-                    doorCollider.GetComponent<BoxCollider>().enabled = true;
-                }
-            }
+            doorCollider.GetComponent<BoxCollider>().enabled = true;
+            theText.SetActive(true);
+            openTheDoor = true;
         }
-
-        if (Input.GetKey(KeyCode.E) && firstGone)
-        {
-            firstGone.SetActive(false);
-            howManyAreThere += 1;
-
-            if (howManyAreThere <= 1 && thirdGone)
-            {
-                thirdGone.SetActive(false);
-                howManyAreThere += 1;
-
-                if (howManyAreThere == 2 && secondGone)
-                {
-                    theText.SetActive(true);
-                    secondGone.SetActive(false);
-                    doorCollider.GetComponent<BoxCollider>().enabled = true;
-                }
-            }
-        }
-
-        if (Input.GetKey(KeyCode.E) && secondGone)
-        {
-            secondGone.SetActive(false);
-            howManyAreThere += 1;
-
-            if (howManyAreThere <= 1 && firstGone)
-            {
-                firstGone.SetActive(false);
-                howManyAreThere += 1;
-
-                if (howManyAreThere == 2 && thirdGone)
-                {
-                    theText.SetActive(true);
-                    thirdGone.SetActive(false);
-                    doorCollider.GetComponent<BoxCollider>().enabled = true;
-                }
-            }
-        }
-
-        if (Input.GetKey(KeyCode.E) && secondGone)
-        {
-            secondGone.SetActive(false);
-            howManyAreThere += 1;
-
-            if (howManyAreThere <= 1 && thirdGone)
-            {
-                thirdGone.SetActive(false);
-                howManyAreThere += 1;
-
-                if (howManyAreThere == 2 && firstGone)
-                {
-                    theText.SetActive(true);
-                    firstGone.SetActive(false);
-                    doorCollider.GetComponent<BoxCollider>().enabled = true;
-                }
-            }
-        }
-
-        if (Input.GetKey(KeyCode.E) && thirdGone)
-        {
-            thirdGone.SetActive(false);
-            howManyAreThere += 1;
-
-            if (howManyAreThere <= 1 && firstGone)
-            {
-                firstGone.SetActive(false);
-                howManyAreThere += 1;
-
-                if (howManyAreThere == 2 && secondGone)
-                {
-                    theText.SetActive(true);
-                    secondGone.SetActive(false);
-                    doorCollider.GetComponent<BoxCollider>().enabled = true;
-                }
-            }
-        }
-
-        if (Input.GetKey(KeyCode.E) && thirdGone)
-        {
-            thirdGone.SetActive(false);
-            howManyAreThere += 1;
-
-            if (howManyAreThere <= 1 && secondGone)
-            {
-                secondGone.SetActive(false);
-                howManyAreThere += 1;
-
-                if (howManyAreThere == 2 && firstGone)
-                {
-                    theText.SetActive(true);
-                    firstGone.SetActive(false);
-                    doorCollider.GetComponent<BoxCollider>().enabled = true;
-                }
-            }
-        }
-
     }
 
 }

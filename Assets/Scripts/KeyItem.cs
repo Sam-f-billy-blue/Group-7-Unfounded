@@ -12,36 +12,55 @@ public class KeyItem : MonoBehaviour
     public GameObject skullGone;
     public GameObject theText;
 
+    public bool isBody;
+    public bool isGun;
+    public bool isSkull;
+
     public int amountOfEvidence;
+
+    public KeyItemCounter evidenceRef;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
-    // Update is called once per frame
-    void OnTriggerStay()
+    //  if (amountOfEvidence == 3)
+      //      {
+       //         doorCollider.GetComponent<BoxCollider>().enabled = true;
+        //        theText.SetActive(true);
+       //     }
+
+// Update is called once per frame
+void OnTriggerStay(Collider other)
     {
-        if (Input.GetKey(KeyCode.E) && gunGone)
+        
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            gunGone.SetActive(false);
-            amountOfEvidence++;
-
-        }
-
-        if (Input.GetKey(KeyCode.E) && skullGone)
-        {
-            skullGone.SetActive(false);
-            amountOfEvidence++;
-
-        }
-
-        if (Input.GetKey(KeyCode.E) && bodyGone)
-        {
-            bodyGone.SetActive(false);
-            amountOfEvidence++;
-            
+            print("this is not E");
+            if (other.transform.tag == "Player")
+            {
+                print("this is E");
+                if (isBody == true)
+                {
+                    print ("this is happenign");
+                    evidenceRef.itemCount += 1;
+                    Destroy(this.gameObject);
+                }
+                else if (isSkull == true)
+                {
+                    print("this is happenign");
+                    evidenceRef.itemCount += 1;
+                    Destroy(this.gameObject);
+                }
+                else if (isGun == true)
+                {
+                    print("this is happenign");
+                    evidenceRef.itemCount += 1;
+                    Destroy(this.gameObject);
+                }
+            }
         }
     }
 
