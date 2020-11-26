@@ -25,10 +25,8 @@ public class EnemyAI : MonoBehaviour
 
     public float sightRange;
     public float deathRange;
-    public float heartRange;
     public bool playerInSightRange;
     public bool playerInDeathRange;
-    public bool playerInHeartRange;
 
     private void Awake()
     {
@@ -39,13 +37,10 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
-        playerInHeartRange = Physics.CheckSphere(transform.position, heartRange, whatIsPlayer);
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInDeathRange = Physics.CheckSphere(transform.position, deathRange, whatIsPlayer);
 
         if (player != playerInSightRange && player != playerInDeathRange) Patrolling();
-
-        if (player == playerInHeartRange && player != playerInDeathRange) PlayHeartbeat();
 
         if (player == playerInSightRange && player != playerInDeathRange) ChasePlayer();
 
@@ -54,26 +49,29 @@ public class EnemyAI : MonoBehaviour
 
     private void Patrolling()
     {
-        if (!walkPointSet) SearchWalkPoint(false);
+        
+         if (!walkPointSet) SearchWalkPoint(false);
 
-        if (walkPointSet)
-        { agent.SetDestination(walkPoint);
-            print(walkPoint);
-        }
+         if (walkPointSet)
+         {
+             agent.SetDestination(walkPoint);
+         }
 
-        Vector3 distanceToWalkPoint = transform.position - walkPoint;
+            Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
-        if (distanceToWalkPoint.magnitude < 1f)
+         if (distanceToWalkPoint.magnitude < 1f)
+         {
+             walkPointSet = false;
+             ways.targetWaypointIndex++;
+         }
+      
+
+        if (ways.targetWaypointIndex == 13)
         {
-            walkPointSet = false;
-            ways.targetWaypointIndex++;
+            ways.targetWaypointIndex = 0;
         }
     }
 
-    private void PlayHeartbeat()
-    {
-        beingChased.Play();
-    }
     private void SearchWalkPoint(bool randomize)
     {
         if (randomize)

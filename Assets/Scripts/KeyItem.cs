@@ -8,24 +8,41 @@ public class KeyItem : MonoBehaviour
 
     public Component doorCollider;
     public GameObject bodyGone;
+    public GameObject gunGone;
+    public GameObject skullGone;
     public GameObject theText;
+
+    public int amountOfEvidence;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
     void OnTriggerStay()
     {
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKey(KeyCode.E) && gunGone)
         {
-            doorCollider.GetComponent<BoxCollider>().enabled = true;
-            theText.SetActive(true);
+            gunGone.SetActive(false);
+            amountOfEvidence++;
+
         }
 
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKey(KeyCode.E) && skullGone)
+        {
+            skullGone.SetActive(false);
+            amountOfEvidence++;
+
+        }
+
+        if (Input.GetKey(KeyCode.E) && bodyGone)
+        {
             bodyGone.SetActive(false);
+            amountOfEvidence++;
+            
+        }
     }
+
 }

@@ -8,6 +8,8 @@ TagManager:
   - DoorButton
   - Key
   - Enemy
+  - Skull
+  - Gun
   layers:
   - Default
   - TransparentFX
