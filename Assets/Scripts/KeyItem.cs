@@ -26,37 +26,31 @@ public class KeyItem : MonoBehaviour
 
     }
 
-    //  if (amountOfEvidence == 3)
-      //      {
-       //         doorCollider.GetComponent<BoxCollider>().enabled = true;
-        //        theText.SetActive(true);
-       //     }
-
 // Update is called once per frame
 void OnTriggerStay(Collider other)
     {
         
         if (Input.GetKeyDown(KeyCode.E))
         {
-            print("this is not E");
+          //  print("this is not E");
             if (other.transform.tag == "Player")
             {
-                print("this is E");
+               // print("this is E");
                 if (isBody == true)
                 {
-                    print ("this is happenign");
+                    //print ("this is happenign");
                     evidenceRef.itemCount += 1;
                     Destroy(this.gameObject);
                 }
                 else if (isSkull == true)
                 {
-                    print("this is happenign");
+                    //print("this is happenign");
                     evidenceRef.itemCount += 1;
                     Destroy(this.gameObject);
                 }
                 else if (isGun == true)
                 {
-                    print("this is happenign");
+                    //print("this is happenign");
                     evidenceRef.itemCount += 1;
                     Destroy(this.gameObject);
                 }

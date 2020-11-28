@@ -10,6 +10,8 @@ TagManager:
   - Enemy
   - Skull
   - Gun
+  - Door
+  - Pickup
   layers:
   - Default
   - TransparentFX
