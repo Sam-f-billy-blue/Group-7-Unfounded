@@ -13,7 +13,7 @@ public class KeyItemCounter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        itemCount = 0;
+        itemCount = -2;
     }
 
     // Update is called once per frame
@@ -21,7 +21,6 @@ public class KeyItemCounter : MonoBehaviour
     {
         if (itemCount >= 3 && openTheDoor == true)
         {
-            print ("did this even happen");
             doorCollider.GetComponent<BoxCollider>().enabled = true;
             theText.SetActive(true);
             openTheDoor = false;
