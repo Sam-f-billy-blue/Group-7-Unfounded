@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class KeyItem : MonoBehaviour
 {
@@ -20,42 +22,61 @@ public class KeyItem : MonoBehaviour
 
     public KeyItemCounter evidenceRef;
 
+    public Transform thePlayer;
+    [SerializeField] Image pickupPopup;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        DisablePickupPopup();
     }
 
-// Update is called once per frame
-void OnTriggerStay(Collider other)
+    // Update is called once per frame
+    void OnTriggerStay(Collider other)
     {
-        
+
+        EnablePickupPopup();
         if (Input.GetKeyDown(KeyCode.E))
         {
-          //  print("this is not E");
+            //  print("this is not E");
             if (other.transform.tag == "Player")
             {
-               // print("this is E");
+                // print("this is E");
                 if (isBody == true)
                 {
                     //print ("this is happenign");
                     evidenceRef.itemCount += 1;
                     Destroy(this.gameObject);
+                    DisablePickupPopup();
                 }
                 else if (isSkull == true)
                 {
                     //print("this is happenign");
                     evidenceRef.itemCount += 1;
                     Destroy(this.gameObject);
+                    DisablePickupPopup();
                 }
                 else if (isGun == true)
                 {
                     //print("this is happenign");
                     evidenceRef.itemCount += 1;
                     Destroy(this.gameObject);
+                    DisablePickupPopup();
                 }
             }
         }
+        Invoke("DisablePickupPopup", 3);
+        //DisablePickupPopup();
+
+    }
+
+    void EnablePickupPopup()
+    {
+        pickupPopup.gameObject.SetActive(true);
+    }
+    void DisablePickupPopup()
+    {
+        pickupPopup.gameObject.SetActive(false);
     }
 
 }

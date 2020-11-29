@@ -14,27 +14,12 @@ public class OpenDoorWithE : MonoBehaviour
     private bool isItOpen = false;
     private Animator moveJigga;
 
-    [SerializeField] Image pickupPopup;
-
-    private void Start()
-    {
-        DisablePickupPopup();
-    }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
             Pressed();
-        }
-
-        RaycastHit hittingTheDoor;
-        if (Physics.Raycast(thePlayer.transform.position, thePlayer.transform.forward, out hittingTheDoor, 2f))
-        {
-            EnablePickupPopup();
-        } else
-        {
-            DisablePickupPopup();
         }
 
     }
@@ -57,14 +42,6 @@ public class OpenDoorWithE : MonoBehaviour
         }
     }
 
-    void EnablePickupPopup()
-    {
-        pickupPopup.gameObject.SetActive(true);
-    }
-    void DisablePickupPopup()
-    {
-        pickupPopup.gameObject.SetActive(false);
-    }
 }
 
 //YouTube Channel Twin Gaming Studios :P
