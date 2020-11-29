@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: Group 7
-  productName: GPF104_assessment_2_prototype
+  productName: Unfounded_DEV_BUILD
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -128,7 +128,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 0.3.5
+  bundleVersion: 0.9
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -273,49 +273,49 @@ PlayerSettings:
   - m_BuildTarget: Standalone
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 0f0e9c0875f4a5c408d2a28796f561e3, type: 3}
+      m_Icon: {fileID: 2800000, guid: 13f69b357a9b1574db6021b37765e617, type: 3}
       m_Width: 1024
       m_Height: 1024
       m_Kind: 0
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 0f0e9c0875f4a5c408d2a28796f561e3, type: 3}
+      m_Icon: {fileID: 2800000, guid: 13f69b357a9b1574db6021b37765e617, type: 3}
       m_Width: 512
       m_Height: 512
       m_Kind: 0
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 0f0e9c0875f4a5c408d2a28796f561e3, type: 3}
+      m_Icon: {fileID: 2800000, guid: 13f69b357a9b1574db6021b37765e617, type: 3}
       m_Width: 256
       m_Height: 256
       m_Kind: 0
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 0f0e9c0875f4a5c408d2a28796f561e3, type: 3}
+      m_Icon: {fileID: 2800000, guid: 13f69b357a9b1574db6021b37765e617, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 0f0e9c0875f4a5c408d2a28796f561e3, type: 3}
+      m_Icon: {fileID: 2800000, guid: 13f69b357a9b1574db6021b37765e617, type: 3}
       m_Width: 64
       m_Height: 64
       m_Kind: 0
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 0f0e9c0875f4a5c408d2a28796f561e3, type: 3}
+      m_Icon: {fileID: 2800000, guid: 13f69b357a9b1574db6021b37765e617, type: 3}
       m_Width: 48
       m_Height: 48
       m_Kind: 0
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 0f0e9c0875f4a5c408d2a28796f561e3, type: 3}
+      m_Icon: {fileID: 2800000, guid: 13f69b357a9b1574db6021b37765e617, type: 3}
       m_Width: 32
       m_Height: 32
       m_Kind: 0
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 0f0e9c0875f4a5c408d2a28796f561e3, type: 3}
+      m_Icon: {fileID: 2800000, guid: 13f69b357a9b1574db6021b37765e617, type: 3}
       m_Width: 16
       m_Height: 16
       m_Kind: 0
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 0f0e9c0875f4a5c408d2a28796f561e3, type: 3}
+      m_Icon: {fileID: 2800000, guid: 13f69b357a9b1574db6021b37765e617, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
